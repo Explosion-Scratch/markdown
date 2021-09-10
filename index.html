@@ -118,9 +118,11 @@
     placeholder: "Type some markdown here...",
     extendedAutolinks: true
   });
+  
   editor.on("change", () => {
     document.title = app.title();
   });
+
   function tooltips() {
     [...document.querySelectorAll("*")].forEach((node) => {
       if (node._tippy) {
@@ -141,13 +143,15 @@
         mode: "edit",
         fullscreen: false,
         stats: {
-          words: 3,
-          paragraphs: 5
+          words: 0,
+          paragraphs: 0
         }
       };
     },
     mounted() {
       tooltips();
+      console.log("Mounted");
+      document.title = this.title();
     },
     methods: {
       toggleFullscreen() {
@@ -162,6 +166,27 @@
       title() {
         var md = editor.getMarkdown();
         localStorage.setItem("val", md);
+        function countWords(str) {
+          var matches = str.match(/[\w\d\’\'-]+/gi);
+          return matches ? matches.length : 0;
+        }
+        function paragraphs(text) {
+          text = text.split("\n\n");
+          var g = text.length;
+          var i = 0;
+          var strip_whitespace = /\s+/gi;
+          while (g >= 0) {
+            g--;
+            var tmp = text[g];
+            tmp = tmp ? tmp.replace(strip_whitespace, "") : tmp;
+            if (tmp && tmp.length > 1) {
+              i++;
+            }
+          }
+          return i;
+        }
+        this.stats.words = countWords(md);
+        this.stats.paragraphs = paragraphs(md);
         return (md.split("\n")[0].split(/#+/)[1] || "Document").trim();
       },
       save() {
