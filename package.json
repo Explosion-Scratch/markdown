@@ -1,27 +1,22 @@
 {
-  "name": "static",
+  "name": "markdown-editor",
   "version": "1.0.0",
-  "description": "This is a static template with no bundling",
+  "description": "",
   "main": "index.html",
   "scripts": {
-    "start": "serve",
-    "build": "echo This is a static template, there is no bundler or bundling involved!"
+    "start": "serve"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/codesandbox-app/static-template.git"
+    "url": "git+https://github.com/explosion-scratch/markdown"
   },
-  "keywords": [
-    "static",
-    "template",
-    "codesandbox"
-  ],
-  "author": "Ives van Hoorne",
+  "keywords": [],
+  "author": "Explosion Implosion",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/codesandbox-app/static-template/issues"
+    "url": "https://github.com/explosion-scratch/markdown/issues"
   },
-  "homepage": "https://github.com/codesandbox-app/static-template#readme",
+  "homepage": "https://github.com/explosion-scratch/markdown#readme",
   "devDependencies": {
     "serve": "^11.2.0"
   }
