@@ -1,2 +1,3 @@
-# markdown
-Created with CodeSandbox
+# Markdown editor
+
+A beautiful single page markdown editor
